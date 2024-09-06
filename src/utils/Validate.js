@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Validate = (email,password) => {
 
 const isMailValid = /^[a-zA-Z0-9_.+\-]+[\x40][a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(email);
