@@ -3,10 +3,15 @@ import Header from './Header'
 import Validate from '../utils/Validate';
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
 import auth from '../utils/firebase';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/userSlice';
 
 const SignIn = () => {
     const [isSignIn,setIsSignIn] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const mail = useRef(null);
     const password = useRef(null);
     const toggleSignUp = () =>{
@@ -20,9 +25,8 @@ const SignIn = () => {
             //Sign Up
             createUserWithEmailAndPassword(auth, mail.current.value, password.current.value)
                 .then((userCredential) => {
-                // Signed up 
                 const user = userCredential.user;
-                // ...
+                navigate('/Browse');
                  })
             .catch((error) => {
                 const errorCode = error.code;
@@ -36,7 +40,7 @@ const SignIn = () => {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                // ...
+                    navigate('/Browse');
                  })
             .catch((error) => {
                 const errorCode = error.code;
@@ -50,6 +54,8 @@ const SignIn = () => {
     }
   return (
     <div>
+        <div className='absolute'><img src='https://assets.nflxext.com/ffe/siteui/vlv3/dae1f45f-c2c5-4a62-8d58-6e1b0c6b2d8e/6d1fb8a4-5844-42a4-9b01-1c6c128acf19/IN-en-20240827-TRIFECTA-perspective_WEB_c292a608-cdc6-4686-8dc8-405bfcf753af_large.jpg' 
+        alt='background image'/></div>
         <Header/>
         <form onSubmit={(e)=>e.preventDefault()} className='bg-black absolute p-16 w-1/3 h-auto my-36 mx-auto left-0 right-0 text-white bg-opacity-70'>
         <h1 className='font-bold text-3xl my-3'>{isSignIn ? "Sign In" : "Sign Up"}</h1>
