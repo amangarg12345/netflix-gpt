@@ -3,15 +3,10 @@ import Header from './Header'
 import Validate from '../utils/Validate';
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
 import auth from '../utils/firebase';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { addUser } from '../utils/userSlice';
 
 const SignIn = () => {
     const [isSignIn,setIsSignIn] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
     const mail = useRef(null);
     const password = useRef(null);
     const toggleSignUp = () =>{
@@ -26,7 +21,7 @@ const SignIn = () => {
             createUserWithEmailAndPassword(auth, mail.current.value, password.current.value)
                 .then((userCredential) => {
                 const user = userCredential.user;
-                navigate('/Browse');
+                
                  })
             .catch((error) => {
                 const errorCode = error.code;
@@ -40,7 +35,6 @@ const SignIn = () => {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                    navigate('/Browse');
                  })
             .catch((error) => {
                 const errorCode = error.code;
