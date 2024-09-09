@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 const MainVideoTrailer = ({id}) => {
   useVideoTrailer(id);
   const trailer = useSelector((store)=>store.nowPlayingMovies?.trailerVideo);
-  console.log(trailer);
+  //console.log(trailer);
   
   return (
     <div className='w-screen'>
