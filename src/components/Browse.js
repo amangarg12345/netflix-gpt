@@ -4,7 +4,9 @@ import auth from "../utils/firebase";
 import MainContainer from "./MainContainer";
 import SecondContainer from "./SecondContainer";
 
+
 const Browse = () => {
+  
     const toggleSignOut = () =>{
         signOut(auth).then(() => {
             // Sign-out successful.
@@ -12,7 +14,6 @@ const Browse = () => {
           }).catch((error) => {
             // An error happened.
           });
-          
     }
   return (
     <div>
