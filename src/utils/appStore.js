@@ -5,7 +5,7 @@ import nowPlayingReducer from './nowPlayingSlice'
 const appStore = configureStore({
     reducer : {
         user : userReducer,
-        nowPlaying : nowPlayingReducer,
+        nowPlayingMovies : nowPlayingReducer,
     },
 });
 
